@@ -37,10 +37,10 @@ switch ($level) {
         echo "表現不錯";
         break;
     case 'C':
-        echo "加油";
+        echo "再加油";
         break;
     case 'D':
-        echo "需再努力";
+        echo "還需再努力";
         break;
     default:
         echo"可憐阿";
