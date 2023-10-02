@@ -1,6 +1,7 @@
 <?php
-$score=75;
+$score=10;
 echo "我的成績" . $score;
+echo "<br>";
 echo "判斷為:";
 
 if($score>=60){
