@@ -8,7 +8,7 @@
 <body>
 <?php
 
-$a=10;
+$a=20;
 $b=50;
 echo$a;
 echo$b;
