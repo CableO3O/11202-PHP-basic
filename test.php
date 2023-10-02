@@ -1,5 +1,5 @@
 <?php
-$dividend = 101; // 被除数
+$dividend = 100; // 被除数
 $divisor = 2;  // 除数
 
 $remainder = $dividend % $divisor; // 使用取模运算符计算余数
