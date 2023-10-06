@@ -9,20 +9,18 @@
         <tr>
             <th></th>
             <?php
-            // 打印表头行
             for ($i = 1; $i <= 9; $i++) {
                 echo "<th>$i</th>";
             }
             ?>
         </tr>
         <?php
-        // 打印表格内容
         for ($i = 1; $i <= 9; $i++) {
             echo "<tr>";
-            echo "<th>$i</th>"; // 行头
+            echo "<th>$i</th>"; 
             for ($j = 1; $j <= 9; $j++) {
                 $result = $i * $j;
-                echo "<td>$result</td>";
+                echo "<td>$i x $j = $result </td>";
             }
             echo "</tr>";
         }
