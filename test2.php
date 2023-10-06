@@ -7,13 +7,13 @@
 $a=97;
 $flag=true;
 for ($i=2; $i<($a/2) ; $i++) { 
-    $a%$i;
+    ($a % $i);
     if (($a%$i)==0) {
         $flag=false;
         break;
     }
-}
-    if ( $flag=true) {
+  }
+    if ( $flag==true) {
        echo $a.'是質數';
     }
     else{
