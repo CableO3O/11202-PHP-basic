@@ -62,3 +62,11 @@ foreach ($a as $idx => $b) {
     echo $idx . "=>" .$b;
     echo "<br>";
 }
+
+echo "<br>";
+
+$score=[60,22,72,10,80];
+
+foreach($score as $idx => $val){
+    echo '第' . $idx+1 . '位同學的成績為' . $val . '<br>';
+}
