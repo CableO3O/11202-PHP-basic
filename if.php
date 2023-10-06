@@ -46,3 +46,21 @@ switch ($level) {
         echo"可憐阿";
         break;
 }
+echo "<br>";
+for($i=0 ; $i<10 ; $i=$i*2+1){
+    echo $i;
+    echo "<br>";
+}
+$q=0;
+while($q<=60){
+    echo $q;
+    $q=$q+10;
+    echo "<br>";
+}
+$scr=[60,22,72,10,80];
+
+foreach($scr as $idx => $val){
+    echo '第' . $idx+1 . '位同學的成績為' . $val . '<br>';
+}
+
+
