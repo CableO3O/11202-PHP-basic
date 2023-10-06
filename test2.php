@@ -4,9 +4,9 @@
 //     echo $i;
 //     echo',';
 // }
-$a=97;
+$a=98;
 $flag=true;
-for ($i=2; $i<($a/2) ; $i++) { 
+for ($i=2; $i<=($a/2) ; $i++) { 
     ($a % $i);
     if (($a%$i)==0) {
         $flag=false;
