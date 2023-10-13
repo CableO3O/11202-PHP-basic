@@ -54,6 +54,8 @@ for ($i = 4; $i >= 0; $i--) {
 <style>
     * {
         font-family: 'Courier New', Courier, monospace;
+        /* line-height:改行高 */
+        line-height: 10px;
     }
 </style>
 <h1>星星正三角形</h1>
@@ -107,4 +109,45 @@ for ($i = 0; $i < 9; $i++) {
     echo "<br>";
 }
 
+?>
+<h1>星星矩形</h1>
+<?php
+for ($i = 0; $i < 7; $i++) {
+
+    for ($j = 0; $j < 7; $j++) {
+        if ($i == 0 || $i == 6) {
+            echo "*";
+        } else if ($j == 0 || $j == 6) {
+            echo "*";
+        } else {
+            echo "&nbsp";
+        }
+    }
+    echo "<br>";
+}
+?>
+<!-- $j 0123456 
+    $i 0*******
+       1*     *
+       2*     *
+       3*     *
+       4*     *
+       5*     *
+       6******* 
+    -->
+<h1>星星矩形大魔王</h1>
+<?php
+for ($i = 0; $i < 7; $i++) {
+
+    for ($j = 0; $j < 7; $j++) {
+        if ($i == 0 || $i == 6) {
+            echo "*";
+        } else if ($j == 0 || $j == 6 ||$i==$j || $i+$j==6) {
+            echo "*";
+        }else {
+            echo "&nbsp";
+        }
+    }
+    echo "<br>";
+}
 ?>
