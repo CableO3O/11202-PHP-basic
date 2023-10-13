@@ -5,7 +5,6 @@ $target='字母';
 
 $flag='沒找到';
 $start=0;
-$pos=0;
 while($flag=='沒找到'){
 
     $tmp=mb_substr($source,$start,mb_strlen($target));
@@ -14,7 +13,6 @@ while($flag=='沒找到'){
         break;
     }
     $start++;
-    $pos++;
 }
 echo"找到了;位置在.$start";
 echo'<br>';
