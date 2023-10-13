@@ -2,17 +2,24 @@
 <html>
 <head>
     <title>99乘法表</title>
+    <style>
+        table,tr,td,th{
+            border: 1px black solid;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
     <h2>99乘法表</h2>
-    <table border="1">
+    <table >
         <tr>
-            <th></th>
+            <th>
             <?php
             for ($i = 1; $i <= 9; $i++) {
                 echo "<th>$i</th>";
             }
             ?>
+            </th>
         </tr>
         <?php
         for ($i = 1; $i <= 9; $i++) {
