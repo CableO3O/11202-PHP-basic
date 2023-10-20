@@ -150,9 +150,8 @@ for ($i = 0; $i <= $amount; $i++) {
     for ($j = 0; $j < $amount-$i; $j++) {
         echo "&nbsp";
     }
-    $count=$i*2+1;
-    for ($k = 0; $k < $count; $k++) {
-        if ($k == 0 || $k==$count-1 || $i==$amount) {
+    for ($k = 0; $k < $i*2+1; $k++) {
+        if ($k == 0 || $k==$i*2 || $i==$amount) {
             echo"*";
         }else{
             echo "&nbsp";
