@@ -32,7 +32,7 @@
 // 3   3
 // 4   4
 // 5   5
-$amount=3;
+$amount=10;
 
 
 for ($i = 0; $i <= $amount; $i++) {
@@ -61,21 +61,7 @@ for ($i = $amount; $i >= 0; $i--) {
         line-height: 10px;
     }
 </style>
-<h1>星星正三角形</h1>
-<?php
-// 第1排決定共幾排星星
-for ($i = 0; $i < $amount; $i++) {
-    //  第2排決定每排打幾個空排
-    for ($j = 0; $j < (($amount-1) - $i); $j++) {
-        echo "&nbsp";
-    }
-    // 第3排決定每排打幾個星星
-    for ($k = 0; $k < ($i * 2 + 1); $k++) {
-        echo "*";
-    }
-    echo "<br>";
-}
-?>
+
 <h1>星星倒三角形</h1>
 <?php
 // 第1排決定共幾排星星
@@ -154,6 +140,38 @@ for ($i = 0; $i < $amount; $i++) {
         else{
             echo "&nbsp";
         }
+    }
+    echo "<br>";
+}
+?>
+<h1>空心正三角形</h1>
+<?php
+for ($i = 0; $i <= $amount; $i++) {
+    for ($j = 0; $j < $amount-$i; $j++) {
+        echo "&nbsp";
+    }
+    $count=$i*2+1;
+    for ($k = 0; $k < $count; $k++) {
+        if ($k == 0 || $k==$count-1 || $i==$amount) {
+            echo"*";
+        }else{
+            echo "&nbsp";
+        }
+    }
+    echo "<br>";
+}
+?>
+<h1>星星正三角形</h1>
+<?php
+// 第1排決定共幾排星星
+for ($i = 0; $i < $amount; $i++) {
+    //  第2排決定每排打幾個空排
+    for ($j = 0; $j < (($amount-1) - $i); $j++) {
+        echo "&nbsp";
+    }
+    // 第3排決定每排打幾個星星
+    for ($k = 0; $k < ($i * 2 + 1); $k++) {
+        echo "*";
     }
     echo "<br>";
 }
