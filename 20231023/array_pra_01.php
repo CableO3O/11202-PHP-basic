@@ -18,6 +18,7 @@ for ($i = 1; $i <= 9; $i++) {
 };
 
 // print_r($nine);
+// 瀏覽器會自動將沒有補齊的標籤補上去，但盡量不要用
 echo"<table>";
 foreach($nine as $idx => $value){
     
