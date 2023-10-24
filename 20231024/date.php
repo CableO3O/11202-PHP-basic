@@ -16,3 +16,19 @@ $date1="2023-10-24";
 $date2="2023-11-15";
 $diff=(strtotime($date2)-strtotime($date1))/(60*60*24);
 echo $diff . "天";
+?>
+<h1>距離下一次生日</h1>
+<?php
+$date="1998-05-26";
+$br=strtotime($date);
+$diff=strtotime(date("Y")."-".date("m-d",$br));
+$today=strtotime("now");
+if($diff>$today){
+    $day=($diff-$today)/(60*60*24);
+}else{
+    $diff=strtotime("+1 year",$diff);
+    $day=($diff-$today)/(60*60*24);
+}
+
+echo "距離下一次生日:".date("Y-m-d",$diff)."還有".floor($day)."天";
+?>
