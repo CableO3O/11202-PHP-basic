@@ -48,3 +48,18 @@ if(date("N")>6){
 }else{
     echo "上班日";
 }
+?>
+<h1>利用迴圈來計算連續五個周一的日期</h1>
+<?php
+// 確認今天星期幾
+$todayweek=date("N");
+// 確認跟星期一差幾天
+$diff=1-$todayweek;
+$lastmonday=strtotime("$diff days");
+$nextmonday=date("Y-m-d",strtotime("+1 week",$lastmonday));
+
+for ($i=0; $i <5 ; $i++) { 
+    $nextmonday=date("Y-m-d",strtotime("+1 week",strtotime($nextmonday)));
+    echo $nextmonday;
+    echo "<br>";
+}
