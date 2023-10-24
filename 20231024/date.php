@@ -32,3 +32,19 @@ if($diff>$today){
 
 echo "距離下一次生日:".date("Y-m-d",$diff)."還有".floor($day)."天";
 ?>
+<h1>時間格式化參數</h1>
+<?php
+echo date("Y/m/d");
+echo"<br>";
+echo date("m月d日 l");
+echo"<br>";
+echo date("Y-m-d H:i:s");
+echo"<br>";
+echo date("Y-n-j H:i:s");
+echo"<br>";
+echo "今天是西元".date("Y年m月d日 l");
+if(date("N")>6){
+    echo "假日";
+}else{
+    echo "上班日";
+}
