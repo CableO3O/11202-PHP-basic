@@ -23,12 +23,19 @@
 echo "<h3>";
 echo date("西元Y年m月");
 echo "</h3>";
+// 年
 $thisMonth=date("Y");
+// 本年本月1日
 $thisFirstDay=date("Y-m-1");
+// 指定日子為星期幾
 $thisFirstDate=date('w',strtotime($thisFirstDay));
+// 當前月份的天數
 $thisMonthDays=date("t");
+// 當前月份最後一天日期
 $thisLastDay=date("Y-m-$thisMonthDays");
+// 當前月份週數，ceil(無條件進位)
 $weeks=ceil(($thisMonthDays+$thisFirstDate)/7);
+// 在看月曆時，如果前面有空白，該空白日期(本月1日-1日的星期)
 $firstCell=date("Y-m-d",strtotime("-$thisFirstDate days",strtotime($thisFirstDay)));
 echo $firstCell;
 echo "<table>";
@@ -46,12 +53,14 @@ for($i=0;$i<$weeks;$i++){
     for($j=0;$j<7;$j++){
         $addDays=7*$i+$j;
         $thisCellDate=strtotime("+$addDays days",strtotime($firstCell));
+        // 給六日上css
         if(date('w',$thisCellDate)==0 || date('w',$thisCellDate)==6){
             echo "<td style='background:pink'>";
 
         }else{
             echo "<td>";
         }
+        // 如果月份相同才echo
         if(date("m",$thisCellDate)==date("m",strtotime($thisFirstDay))){
             echo date("Y-m-d",$thisCellDate);
         }
