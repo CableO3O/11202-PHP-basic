@@ -14,7 +14,7 @@
         echo "<a href='logout.php'>登出</a>";
 
     }else{
-        setcookie("error","沒有登入相關驗證，非法登入".time());
+        setcookie("error","沒有登入相關驗證，非法登入");
         header("location:index.php");
     }
     ?>
