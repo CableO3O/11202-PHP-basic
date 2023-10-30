@@ -2,7 +2,7 @@
 date_default_timezone_set("Asia/Taipei");
 if($_POST['acc']=='admin' && $_POST['pw']=='1234'){
 
-    setcookie("login","mackliu",time()+60);
+    setcookie("login","cable",time()+60);
 
     header("location:member.php");
 
