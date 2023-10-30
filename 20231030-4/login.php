@@ -1,3 +1,6 @@
+<?php 
+include_once "session.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,10 +41,9 @@
 </head>
 <body>
 <?php
- session_start();
-if(isset($_SESSION['login']) && !empty($_SESSION['login'])){
+
     include_once "header.php";
-}
+
 ?>
 <div class='login-block'>
     <?php
