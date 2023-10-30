@@ -32,7 +32,6 @@ if(isset($_GET["month"])&&isset($_GET["year"])){
 echo "<h3 style=width:500px;display:block;margin:auto;text-align:center>";
 echo date("西元{$year}年{$month}月");
 echo "</h3>";
-// 年
 // 本年本月1日
 $thisFirstDay=date("{$year}-{$month}-1");
 // 指定日子為星期幾
