@@ -1,6 +1,11 @@
 <?php
+// mysql:host=localhost本機端，charset=utf8編碼，dbname資料庫名稱
+
 $dsn="mysql:host=localhost;charset=utf8;dbname=school";
+
+// 輸入資料庫帳號密碼
 $pdo=new PDO($dsn,'root','');  
+
 
 // $sql="select * from students";
 // $rows=$pdo->query($sql)->fetchAll();
