@@ -21,7 +21,8 @@ $pdo=new PDO($dsn,'root','');
 // $sql="delete from `classes` where `id`='11'";
 // $pdo->query($sql);
 
-
+// 查資料用query
+// 改變資料(新增、變更、刪除)用exec
 
 $sql="delete from `classes` where `id`='10'";
-echo $pdo->exec($sql);
+$pdo->exec($sql);
