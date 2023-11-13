@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +11,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <title>首頁</title>
 </head>
+
 <body>
     <div class="container">
-    <h1>哈哈購物商城</h1>
+        <h1>哈哈購物商城</h1>
     </div>
     <header class="nav">
         <div class="nav-item col-4"></div>
@@ -21,9 +26,19 @@
             </ul>
         </div>
         <div class="nav-item col-4">
-        <a href="reg.php" class="btn btn-primary mx-2">註冊</a>
-        <a href="login.php" class="btn btn-success mx-2">登入</a>
+            <?php
+            if (isset($_SESSION['user'])) {
+                echo "歡迎光臨" . $_SESSION['user'];
+                echo "<a href='logout.php' class='btn btn-info mx-2'>登出</a>";
+            } else {
+            ?>
+                <a href="reg.php" class="btn btn-primary mx-2">註冊</a>
+                <a href="login_form.php" class="btn btn-success mx-2">登入</a>
+            <?php
+            }
+            ?>
         </div>
     </header>
 </body>
+
 </html>
