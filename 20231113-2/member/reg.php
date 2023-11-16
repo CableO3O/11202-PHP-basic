@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +20,7 @@
         </div>
         <div class="input-group my-1">
             <label class="col-4 input-group-text">密碼:</label>
-            <input class="form-control" type="text" name="pw" id="pw">
+            <input class="form-control" type="password" name="pw" id="pw">
         </div>
         <div class="input-group my-1">
             <label class="col-4 input-group-text">電子郵件:</label>
@@ -33,6 +34,13 @@
             <label class="col-4 input-group-text">居住地:</label>
             <input class="form-control" type="text" name="address" id="address">
         </div>
+            <?php
+            if (isset($_GET['error'])) {
+                echo "<span style='color:red'>";
+                echo $_GET['error'];
+                echo "</span>";
+            }
+            ?>
         <div>
             <input class="btn btn-primary" type="submit" value="送出">
             <input class="btn btn-warning" type="reset" value="重置">
