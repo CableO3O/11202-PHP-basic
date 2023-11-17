@@ -33,3 +33,19 @@ function sum2(...$arg){
 
 echo sum2(12,36,89);
 ?>
+
+<h1>自訂函式預設值</h1>
+<?php
+// 預設變數c是3
+function sum3($a,$b,$c=3){
+    $sum=($a+$b)*$c;
+    echo "$a 、 $b , 倍數 $c <br>";
+    return $sum;
+}
+
+echo "總和是".sum3(10,15);
+echo "<hr>";
+echo "總和是".sum3(10,15,10);
+
+?>
+
