@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php include_once "./include/connect.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,8 +37,14 @@
 <div class="container">
     <h1>使用者資料</h1>
     <?php
-    $dsn="mysql:host=localhost;charset=utf8;dbname=member";
-    $pdo=new PDO($dsn,'root','');
+    if (isset($_SESSION['msg'])) {
+        echo "<div class='alert alert-warning text-center col-6 m-auto'>";
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+        echo"</div>";
+    }
+
+
     $sql="select * from user where `acc`='{$_SESSION['user']}'";
     $user=$pdo->query($sql)->fetch();
     ?>
@@ -62,7 +69,9 @@
             <label class="col-4 input-group-text">居住地:</label>
             <input class="form-control" type="text" name="address" id="address" value="<?=$user['address'];?>">
         </div>
+            
         <div>
+        <input type="hidden" name="id" id="id" value="<?=$user['id'];?>">
             <input class="btn btn-primary mx-3" type="submit" value="更新">
             <input class="btn btn-warning mx-3" type="reset" value="重置">
             <input class="btn btn-danger mx-3" type="button" value="消失">

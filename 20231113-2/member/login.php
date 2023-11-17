@@ -1,11 +1,7 @@
 <?php
-session_start();
+include_once "./include/connect.php";
 $acc=$_POST['acc'];
 $pw=$_POST['pw'];
-
-$dsn="mysql:host=localhost;charset=utf8;dbname=member";
-$pdo=new PDO($dsn,'root','');
-
 $sql="select * from user where `acc`='$acc' && `pw`='$pw'";
 // fetchColumn()直接確認取出的值是否符合
 $user=$pdo->query($sql)->fetchColumn();

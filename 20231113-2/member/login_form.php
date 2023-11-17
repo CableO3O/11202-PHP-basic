@@ -27,7 +27,7 @@
             </div>
             <div class="input-group my-4">
                 <label class="col-4 input-group-text">密碼:</label>
-                <input class="form-control" type="text" name="pw" id="pw">
+                <input class="form-control" type="password" name="pw" id="pw">
             </div>
             <div>
                 <input class="btn btn-primary mx-2" type="submit" value="送出">
