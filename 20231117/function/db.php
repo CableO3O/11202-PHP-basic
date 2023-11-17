@@ -1,4 +1,7 @@
 <?php
+$rows = all('students',['dept'=>'1'],"order by id desc");
+
+dd($rows);
 function all($data_sheet = null, $where = '',$other='')
 {   
     $dsn = 'mysql:host=localhost;charset=utf8;dbname=school';
@@ -37,6 +40,3 @@ function dd($array)
     echo "</pre>";
 }
 
-$rows = all('students',['dept'=>'1'],"order by id desc");
-
-dd($rows);
