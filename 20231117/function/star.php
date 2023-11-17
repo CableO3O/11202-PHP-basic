@@ -6,9 +6,28 @@
         /* line-height: 10px; */
     }
 </style>
-
 <?php
-
+stars('正三角形', 10);
+stars('菱形', 10);
+stars('矩形', 10);
+stars('矩形對角線', 10);
+function stars($sharp, $size)
+{
+    switch ($sharp) {
+        case '正三角形':
+            equilateral_triangle($size);
+            break;
+        case '菱形':
+            diamond($size);
+            break;
+        case '矩形':
+            rectangle($size);
+            break;
+        case '矩形對角線':
+            rectangle_cross($size);
+            break;
+    }
+}
 function equilateral_triangle($size)
 {
     for ($i = 0; $i < $size; $i++) {
@@ -21,11 +40,8 @@ function equilateral_triangle($size)
         echo "<br>";
     }
 }
-equilateral_triangle(12);
-?>
-<h1>星星菱形</h1>
-<?php
-function diamond($size){
+function diamond($size)
+{
     $mid = floor(($size * 2 - 1) / 2);
     $tmp = 0;
     for ($i = 0; $i < ($size * 2 - 1); $i++) {
@@ -45,11 +61,8 @@ function diamond($size){
         echo "<br>";
     }
 }
-diamond (11);
-?>
-<h1>星星矩形</h1>
-<?php
-function rectangle($size){
+function rectangle($size)
+{
     for ($i = 0; $i < $size; $i++) {
         for ($j = 0; $j < $size; $j++) {
             if ($i == 0 || $i == ($size - 1)) {
@@ -63,5 +76,23 @@ function rectangle($size){
         echo "<br>";
     }
 }
-rectangle(20);
+function rectangle_cross($size){
+for ($i = 0; $i < $size; $i++) {
+
+    for ($j = 0; $j < $size; $j++) {
+        if ($i == 0 || $i == ($size-1)) {
+            echo "*";
+        } else if ($j == 0 || $j == ($size-1 )) {
+            echo "*";
+        }else if($i==$j || $i+$j==($size-1)){
+            // span行內標籤
+            echo "<span style='color:red'>*</span>";
+        }
+        else{
+            echo "&nbsp";
+        }
+    }
+    echo "<br>";
+}
+}
 ?>
