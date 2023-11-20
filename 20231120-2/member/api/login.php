@@ -2,11 +2,14 @@
 include_once "../include/connect.php";
 $acc=$_POST['acc'];
 $pw=$_POST['pw'];
-$sql="select * from user where `acc`='$acc' && `pw`='$pw'";
 // fetchColumn()直接確認取出的值是否符合
-$user=$pdo->query($sql)->fetchColumn();
 // if($user['acc']==$acc && $user['pw']==$pw){
-if($user){
+    // $sql="select count(*) from user where `acc`='$acc' && `pw`='$pw'";
+    // $user=$pdo->query($sql)->fetchColumn();
+
+    $res=total('user',['acc'=>$acc,'pw'=>$pw]);
+    dd($res);
+if($res){
     $_SESSION['user']=$acc;
     header("location:../index.php");
 }else{

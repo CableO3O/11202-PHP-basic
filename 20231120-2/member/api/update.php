@@ -6,13 +6,19 @@ $name = htmlspecialchars(trim($_POST['name']));
 $email = htmlspecialchars(trim($_POST['email']));
 $address = htmlspecialchars(trim($_POST['address']));
 $id = htmlspecialchars(trim($_POST['id']));
-$sql="update `user` set `acc`='{$acc}',
-                        `pw`='{$pw}',
-                        `name`='{$name}',
-                        `email`='{$email}',
-                        `address`='{$address}'
-                  where `id`='{$id}'";
-if($pdo->exec($sql)>0){
+// $sql="update `user` set `acc`='{$acc}',
+//                         `pw`='{$pw}',
+//                         `name`='{$name}',
+//                         `email`='{$email}',
+//                         `address`='{$address}'
+//                   where `id`='{$id}'";
+
+$res=update('user',"$id",['acc'=>"{$acc}",
+                   'pw'=>"{$pw}",
+                   'name'=>"{$name}",
+                   'email'=>"{$email}",
+                   'address'=>"{$address}"]);
+if($res>0){
     $_SESSION['msg']="更新成功";
 }else{
     $_SESSION['msg']="資料無異動";

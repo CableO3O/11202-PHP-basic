@@ -12,9 +12,14 @@ $checkuser = $pdo->query($checksql)->fetchColumn();
 if ($checkuser) {
     header("location:../reg.php?error=已有重複帳戶或電子郵件註冊帳號，請輸入其他資料");
 } else {
-    $sql = "insert into `user`(`acc`,`pw`,`name`,`email`,`address`)
-                   values('{$acc}','{$pw}','{$name}','{$email}','{$address}')";
-    $pdo->exec($sql);
+    // $sql = "insert into `user`(`acc`,`pw`,`name`,`email`,`address`)
+    //                values('{$acc}','{$pw}','{$name}','{$email}','{$address}')";
+    // $pdo->exec($sql);
+    insert("user",['acc'=>"{$acc}",
+                   'pw'=>"{$pw}",
+                   'name'=>"{$name}",
+                   'email'=>"{$email}",
+                   'address'=>"{$address}"]);
 
     header("location:../index.php");
 }
