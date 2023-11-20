@@ -5,13 +5,11 @@ $delete=delete("dept",['code'=>'507']);
 dd($delete);
 
 function delete($table,$id){
-    $dsn = 'mysql:host=localhost;charset=utf8;dbname=school';
-    $pdo = new PDO($dsn, 'root', '');
+    include "./include/connect.php";
     $sql="delete from `$table` where ";
 
     if (is_array($id)) {
-        foreach($id as $col=>$value){
-        $tmp[]="`$col`='$value'";}
+        include "./include/foreach_id.php";
 
         $sql .=join(" && ", $tmp);
     }

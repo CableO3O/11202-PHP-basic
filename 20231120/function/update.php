@@ -5,8 +5,7 @@ $up=update("students",['dept'=>2,'status_code'=>'001'],['dept'=>'99','name'=>'å¼
 dd($up);
 
 function update($table,$id,$cols){
-    $dsn = 'mysql:host=localhost;charset=utf8;dbname=school';
-    $pdo = new PDO($dsn, 'root', '');
+    include "./include/connect.php";
     $sql="update `$table` set ";
 
     if (!empty($cols)) {
@@ -20,8 +19,7 @@ function update($table,$id,$cols){
     $sql .= join(",",$tmp);
     $tmp=[];
     if (is_array($id)) {
-        foreach($id as $col=>$value){
-        $tmp[]="`$col`='$value'";}
+        include "./include/foreach_id.php";
 
         $sql .=" where " .join(" && ", $tmp);
     }

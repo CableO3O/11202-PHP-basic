@@ -5,8 +5,7 @@ $insert=insert("dept",['code'=>'507','name'=>'圖書館系']);
 dd($insert);
 
 function insert($table,$values){
-    $dsn = 'mysql:host=localhost;charset=utf8;dbname=school';
-    $pdo = new PDO($dsn, 'root', '');
+    include "./include/connect.php";
     $sql="insert into `$table`";
 
     if (!empty($values)) {

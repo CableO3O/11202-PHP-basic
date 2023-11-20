@@ -1,17 +1,22 @@
 <?php
 // 條件搜索但只會有一筆資料
-$row=find('students',['dept'=>'1','graduate_at'=>'10']);
+$row=find('students',['dept'=>'3']);
 
 dd($row);
 
-function find($table,$id){
-    $dsn = 'mysql:host=localhost;charset=utf8;dbname=school';
+function pdo($db){
+    $dsn = "mysql:host=localhost;charset=utf8;dbname=$db";
     $pdo = new PDO($dsn, 'root', '');
+    return $pdo;
+
+}
+
+function find($table,$id){
+    $pdo = pdo('school');
     $sql="select * from `$table`";
 
     if (is_array($id)) {
-        foreach($id as $col=>$value){
-        $tmp[]="`$col`='$value'";}
+        include "./include/foreach_id.php";
 
         $sql .=" where " .join(" && ", $tmp);
     }
