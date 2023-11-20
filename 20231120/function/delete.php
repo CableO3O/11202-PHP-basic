@@ -4,8 +4,11 @@ $delete=delete("dept",['code'=>'507']);
 
 dd($delete);
 
+$dsn = 'mysql:host=localhost;charset=utf8;dbname=school';
+$pdo = new PDO($dsn, 'root', '');
+
 function delete($table,$id){
-    include "./include/connect.php";
+    global $pdo;
     $sql="delete from `$table` where ";
 
     if (is_array($id)) {
