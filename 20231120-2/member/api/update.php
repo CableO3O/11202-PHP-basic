@@ -1,5 +1,5 @@
 <?php
-include_once "./include/connect.php";
+include_once "../include/connect.php";
 $acc = htmlspecialchars(trim($_POST['acc']));
 $pw = htmlspecialchars(trim($_POST['pw']));
 $name = htmlspecialchars(trim($_POST['name']));
@@ -17,4 +17,4 @@ if($pdo->exec($sql)>0){
 }else{
     $_SESSION['msg']="資料無異動";
 }
-header("location:member.php");
+header("location:../member.php");
