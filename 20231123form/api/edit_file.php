@@ -1,48 +1,63 @@
 <?php
 include_once "../db.php";
+if (isset($_POST['id'])) {
+    $file = find('files', $_POST['id']);
+} else {
+    exit();
+}
+if (!empty($_FILES['img']['tmp_name'])) {
 
-if(!empty($_FILES['img']['tmp_name'])){
+    if ($_POST['name']!=$file['name']) {
+        $file['name']=$_POST['name'];
+    }
 
-    $tmp=explode(".",$_FILES['img']['name']);
-    $subname=".".end($tmp);
-    $filename=date("YmdHis").rand(10000,99999).$subname;
-    move_uploaded_file($_FILES['img']['tmp_name'],"../imgs/".$filename);
+    move_uploaded_file($_FILES['img']['tmp_name'], "../imgs/".$_POST['name']);
 
-     switch($_FILES['img']['type']){
+    switch ($_FILES['img']['type']) {
         case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-            $type="msword";
-        break;
+            $type = "msword";
+            break;
         case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
-            $type='msexcel';
-        break;
+            $type = 'msexcel';
+            break;
         case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
-            $type='msppt';
-        break;
+            $type = 'msppt';
+            break;
         case "application/pdf":
-            $type='pdf';
-        break;
+            $type = 'pdf';
+            break;
         case "image/webp":
         case "image/jpeg":
         case "image/png":
         case "image/gif":
         case "image/bmp":
-            $type=$_FILES['img']['type'];
-        break;
+            $type = $_FILES['img']['type'];
+            break;
         default:
-            $type='other';
+            $type = 'other';
+    }
 
-     }
+        if ($type!=$file['type']) {
+            $file['type']=$type;
+            $subname=end(explode(".",$_FILES['img']['name']));
+            $tmp=explode(".",$file['name']);
+            $tmp[count($tmp)-1]=$subname;
+            $file['name']=join(".".$tmp);
+        }
 
-    $file=['name'=>$filename,
-            'type'=>$type,
-            'size'=>$_FILES['img']['size'],
-            'desc'=>$_POST['desc']];
-
-    insert('files',$file);
-    
-    header("location:../manage.php");
-}else{
-    header("location:../edit_file.php?err=上傳失敗");
+    $file['type'] = $type;
+    $file['size'] = $_FILES['img']['size'];
+} else {
+    if ($_POST['name'] != $file['name']) {
+        rename('../imgs/' . $file['name'], '../imgs/' . $_POST['name']);
+        $file['name'] = $_POST['name'];
+    }
 }
 
-?>
+if ($_POST['desc'] != $file['desc']) {
+    $file['desc'] = $_POST['desc'];
+}
+
+update('files', $_POST['id'], $file);
+
+header("location:../manage.php");
