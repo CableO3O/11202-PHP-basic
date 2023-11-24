@@ -86,13 +86,13 @@ class DB{
         $row = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
         return $row;
     }
-    
+     
     function save($array){
         if(isset($array['id'])){
             $sql = "update `$this->table` set ";
     
-            if (!empty($cols)) {
-                foreach ($cols as $col => $value) {
+            if (!empty($array)) {
+                foreach ($array as $col => $value) {
                     $tmp[] = "`$col`='$value'";
                 }
             } else {
@@ -146,8 +146,7 @@ function dd($array)
 }
 
 
-$student=new DB('students');
-$rows=$student->count();
-dd($rows);
+$student = new DB('students');
+$rows = $student->save(['id' => '2', 'name' =>'黃冠諭']);
 
 ?>
