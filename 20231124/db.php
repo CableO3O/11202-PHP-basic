@@ -3,7 +3,7 @@ date_default_timezone_set("Asia/Taipei");
 session_start();
 class DB{
     
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=material";
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=school";
     protected $pdo;
     protected $table;
 
@@ -13,12 +13,11 @@ class DB{
         $this->pdo=new PDO($this->dsn,'root','');
     }
     
-    function all($table = null, $where = '', $other = '')
+    function all($where = '', $other = '')
     {
-        global $pdo;
-        $sql = "select * from `$table` ";
+        $sql = "select * from `$this->table` ";
 
-    if (isset($table) && !empty($table)) {
+    if (isset($this->table) && !empty($this->table)) {
 
         if (is_array($where)) {
 
@@ -34,17 +33,17 @@ class DB{
 
         $sql .= $other;
         //echo 'all=>'.$sql;
-        $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     } else {
         echo "錯誤:沒有指定的資料表名稱";
     }
 }
 
-function total($table, $id)
+function total($id)
 {
-    global $pdo;
-    $sql = "select count(`id`) from `$table` ";
+    
+    $sql = "select count(`id`) from `$this->table` ";
 
     if (is_array($id)) {
         foreach ($id as $col => $value) {
@@ -57,14 +56,13 @@ function total($table, $id)
         echo "錯誤:參數的資料型態比須是數字或陣列";
     }
     //echo 'find=>'.$sql;
-    $row = $pdo->query($sql)->fetchColumn();
-    return $row;
+    $rows = $this->pdo->query($sql)->fetchColumn();
+    return $rows;
 }
 
-function find($table, $id)
+function find($id)
 {
-    global $pdo;
-    $sql = "select * from `$table` ";
+    $sql = "select * from `$this->table` ";
 
     if (is_array($id)) {
         foreach ($id as $col => $value) {
@@ -77,15 +75,13 @@ function find($table, $id)
         echo "錯誤:參數的資料型態比須是數字或陣列";
     }
     //echo 'find=>'.$sql;
-    $row = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
-    return $row;
+    $rows = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    return $rows;
 }
 
-function update($table, $id, $cols)
+function update($id, $cols)
 {
-    global $pdo;
-
-    $sql = "update `$table` set ";
+    $sql = "update `$this->table` set ";
 
     if (!empty($cols)) {
         foreach ($cols as $col => $value) {
@@ -108,14 +104,12 @@ function update($table, $id, $cols)
         echo "錯誤:參數的資料型態比須是數字或陣列";
     }
     // echo $sql;
-    return $pdo->exec($sql);
+    return $this->pdo->exec($sql);
 }
 
-function insert($table, $values)
+function insert($values)
 {
-    global $pdo;
-
-    $sql = "insert into `$table` ";
+    $sql = "insert into `$this->table` ";
     $cols = "(`" . join("`,`", array_keys($values)) . "`)";
     $vals = "('" . join("','", $values) . "')";
 
@@ -123,13 +117,13 @@ function insert($table, $values)
 
     //echo $sql;
 
-    return $pdo->exec($sql);
+    return $this->pdo->exec($sql);
 }
 
-function del($table, $id)
+function del($id)
 {
     global $pdo;
-    $sql = "delete from `$table` where ";
+    $sql = "delete from `$this->table` where ";
 
     if (is_array($id)) {
         foreach ($id as $col => $value) {
@@ -143,8 +137,12 @@ function del($table, $id)
     }
     //echo $sql;
 
-    return $pdo->exec($sql);
+    return $this->pdo->exec($sql);
 }
+
+
+}
+
 
 function dd($array)
 {
@@ -152,5 +150,7 @@ function dd($array)
     print_r($array);
     echo "</pre>";
 }
-
-}
+$student=new DB('students');
+$rows=$student->find(10);
+dd($rows);
+?>
