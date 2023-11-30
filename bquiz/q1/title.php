@@ -1,5 +1,5 @@
 <h3 class="text-center">新增標題區圖片</h3>
-<form action="" method="post" enctype="multipart/form-data">
+<form action="add_title.php" method="post" enctype="multipart/form-data">
     <table class="col-8 m-auto">
         <tr>
             <td>標題區圖片</td>
