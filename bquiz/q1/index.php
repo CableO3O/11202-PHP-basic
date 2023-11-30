@@ -24,7 +24,7 @@
     <main class="container">
         <h3 class="text-center">網站標題管理</h3>
         <hr>
-        <form action="">
+        <form action="edit_title.php" method="post">
             <table class="table table-bordered text-center">
                 <tr>
                     <td>網站標題</td>
@@ -38,12 +38,12 @@
                 foreach ($rows as $row) {
                 ?>
                     <tr>
-                        <td><img src="./img/<?=$row['img'];?>" alt="" style="width: 300px;height:30px"></td>
-                        <td><input type="text" name="text[]" id="" value="<?=$row['text'];?>" style="width: 90%;"></td>
-                        <td><input type="radio" name="sh" id=""></td>
-                        <td><input type="checkbox" name="del[]" id="" value="<?=$row['id'];?>"></td>
+                        <td><img src="./img/<?= $row['img']; ?>" alt="" style="width: 300px;height:30px"></td>
+                        <td><input type="text" name="text[]" id="" value="<?= $row['text']; ?>" style="width: 90%;"></td>
+                        <td><input type="radio" name="sh" id="" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1) ? 'checked' : ''; ?>></td>
+                        <td><input type="checkbox" name="del[]" id="" value="<?= $row['id']; ?>"></td>
                         <td><input class="btn btn-primary" type="button" value="更新圖片"></td>
-                        <input type="hidden" name="id" value="<?=$row['id'];?>">
+                        <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
                     </tr>
                 <?php
                 }
