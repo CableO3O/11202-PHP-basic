@@ -42,7 +42,7 @@
             </table>
             <div class="d-flex justify-content-between">
                 <div>
-                    <input type="button" onclick="op('#cover','#cvr','view.php?do=title')" value="新增網站標題圖片">
+                    <input type="button" onclick="op('#cover','#cvr','title.php')" value="新增網站標題圖片">
                 </div>
                 <div>
                     <input type="submit" value="修改確定">
