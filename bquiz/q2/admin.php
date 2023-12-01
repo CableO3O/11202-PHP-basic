@@ -43,31 +43,33 @@
         <fieldset>
             <legend>問卷列表</legend>
             <div class="col-9 mx-auto">
-            <table class="table">
-                <tr>
-                    <td>編號</td>
-                    <td>主題內容</td>
-                    <td>操作</td>
-                </tr>
-                <?php
-                $ques = $Que->all(['subject_id' => 0]);
-                foreach ($ques as $idx => $que) {
-                ?>
+                <table class="table">
                     <tr>
-                        <td><?= $idx+1; ?></td>
-                        <td><?= $que['text'] ?></td>
-                        <td>
-                            <button class="btn btn-info">顯示</button>
-                            <button class="btn btn-success">編輯</button>
-                            <a href="./api/del.php?id=<?=$que['id'];?>">
-                                <button class="btn btn-danger">刪除</button>
-                            </a>
-                        </td>
+                        <td>編號</td>
+                        <td>主題內容</td>
+                        <td>操作</td>
                     </tr>
-                <?php
-                }
-                ?>
-            </table>
+                    <?php
+                    $ques = $Que->all(['subject_id' => 0]);
+                    foreach ($ques as $idx => $que) {
+                    ?>
+                        <tr>
+                            <td><?= $idx + 1; ?></td>
+                            <td><?= $que['text'] ?></td>
+                            <td>
+                                <a href="./api/show.php?id=<?= $que['id']; ?>" class="btn <?=($que['sh']==1)?'btn-info':'btn-secondary';?>">
+                                        <?=($que['sh']==1)?'顯示':'隱藏';?>
+                                </a>
+                                <button class="btn btn-success">編輯</button>
+                                <a href="./api/del.php?id=<?= $que['id']; ?>">
+                                    <button class="btn btn-danger">刪除</button>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
             </div>
         </fieldset>
 
