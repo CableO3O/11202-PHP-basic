@@ -1,5 +1,5 @@
 <?php
-include_once "db.php";
+include_once "../db.php";
 $data = [];
 $data['text'] = $_POST['subject'];
 $data['subject_id'] = 0;
@@ -18,4 +18,4 @@ foreach ($_POST['opt'] as $opt) {
     $Que->save($data);
 }
 
-header("location:admin.php");
+header("location:../admin.php");

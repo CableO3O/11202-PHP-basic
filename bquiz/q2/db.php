@@ -146,5 +146,5 @@ function dd($array)
 }
 
 
-$Que=new DB('ques');
+$Que=new DB('que');
 ?>
