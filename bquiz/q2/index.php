@@ -1,3 +1,4 @@
+<?php include_once "db.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,20 +22,22 @@
                 <th>結果</th>
                 <th>狀態</th>
             </tr>
+            <?php
+            $ques=$Que->all(['subject_id'=>0]);
+            foreach ($ques as $idx => $que) {
+            ?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?=$idx+1;?></td>
+                <td><?=$que['text'];?></td>
+                <td><?$que['count'];?></td>
+                <td><a class="btn btn-info" href="result.php?id=<?=$que['id'];?>">投票結果</a></td>
+                <td>
+                    <a class="btn btn-warning" href="vote.php?id=<?=$que['id'];?>">我要投票</a>
+                </td>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            <?php
+            }
+            ?>
         </table>
 
 
